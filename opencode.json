@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "opencode-multimodal",
+    "superpowers@git+https://github.com/obra/superpowers.git"
+  ],
+  "model": "deepseek/deepseek-flash",
+  "small_model": "deepseek/deepseek-flash",
+  "agent": {
+    "build": {
+      "model": "deepseek/deepseek-flash"
+    },
+    "plan": {
+      "model": "deepseek/deepseek-v4-pro"
+    },
+    "deep-think": {
+      "mode": "subagent",
+      "model": "deepseek/deepseek-v4-pro",
+      "description": "深度推理专家：复杂架构设计、疑难 bug 根因推理、多方案权衡取舍、长链路逻辑推演时调用。只做分析和给结论，不直接改代码。",
+      "prompt": "你是深度推理专家。针对交给你的问题，充分推理、列出依据、权衡方案，最后给出明确结论和建议。不要修改任何文件。",
+      "permission": {
+        "edit": "deny",
+        "bash": "ask"
+      }
+    }
+  }
+}
